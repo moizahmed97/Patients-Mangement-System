@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>KFUPM Maintenance System</title>
+        <!--Bootstrap-->
+        <link crossorigin="anonymous" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+              integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+              rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+        <link href="../../styles/general-styles.css" rel="stylesheet">
+        <link href="../../styles/admin.css" rel="stylesheet">
+    </head>
+    <body>
+        <!--Navigation-->
+        <nav class="navbar navbar-expand-lg sticky-top navbar-dark bg-dark">
+            <div class="container">
+                <a class="navbar-brand" href="../landing.html">KFUPM Maintenance</a>
+                <!--Collapse button-->
+                <button aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"
+                        class="navbar-toggler"
+                        data-target="#navbarSupportedContent" data-toggle="collapse" type="button">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <!--Links-->
+                <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
+                    <div class="navbar-nav ">
+                        <a class="nav-item nav-link" href="requests.html">Requests</a>
+                        <a class="nav-item nav-link" href="services.html">Services</a>
+                        <a class="nav-item nav-link active" href="#">Staff</a>
+                        <a class="nav-item nav-link" href="users.html">Users</a>
+                        <a class="nav-item nav-link" href="reports.html">Generate Report</a>
+                        <a class="nav-item nav-link" href="../landing.html">
+                            <button class="btn btn-warning btn-sm" type="button">Sign Out</button>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+        <div class="container">
+            <h2 class="display-5 mt-3">Staff Details</h2>
+            <h5 class="display-5 text-muted">Here you can manage all currently employed staff</h5>
+            <hr>
+            <div class="add">
+                <button class="btn btn-success">Add</button>
+            </div>
+            <table class="table">
+                <thead class="thead-dark">
+                    <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">First Name</th>
+                        <th scope="col">Last Name</th>
+                        <th scope="col">Employment Date</th>
+                        <th scope="col">Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th scope="row">1</th>
+                        <td>Bruce</td>
+                        <td>Haken</td>
+                        <td>5/22/18, 6:12 PM</td>
+                        <td><button class="btn btn-danger mx-auto">Remove</button></td>
+                    </tr>
+                    <tr>
+                        <th scope="row">2</th>
+                        <td>Lauritz</td>
+                        <td>Wardell</td>
+                        <td>10/4/18, 1:18 AM</td>
+                        <td><button class="btn btn-danger mx-auto">Remove</button></td>
+                    </tr>
+                    <tr>
+                        <th scope="row">3</th>
+                        <td>Emmerich</td>
+                        <td>Linbohm</td>
+                        <td>12/12/18, 10:10 AM</td>
+                        <td><button class="btn btn-danger mx-auto">Remove</button></td>
+                    </tr>
+                    <tr>
+                        <th scope="row">4</th>
+                        <td>Ezequiel</td>
+                        <td>Shorland</td>
+                        <td>2/9/19, 1:23 AM</td>
+                        <td><button class="btn btn-danger mx-auto">Remove</button></td>
+                    </tr>
+                    <tr>
+                        <th scope="row">5</th>
+                        <td>Lennie</td>
+                        <td>Pattington</td>
+                        <td>11/3/18, 5:44 PM</td>
+                        <td><button class="btn btn-danger mx-auto">Remove</button></td>
+                    </tr>
+                </tbody>
+            </table>
+
+        </div>
+
+        <!--Bootstrap-->
+        <script crossorigin="anonymous"
+                integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+                src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+        <script crossorigin="anonymous"
+                integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+                src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+        <script crossorigin="anonymous"
+                integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+                src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    </body>
+</html>

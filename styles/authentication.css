@@ -1,0 +1,43 @@
+body {
+    background: #f8f8f8;
+    padding: 40px 0;
+    font-family: 'Roboto', sans-serif;
+}
+
+.tab {
+    font-size: 25px;
+    padding-bottom: 5px;
+    color: #000;
+    margin: 0 15px 0 0;
+    display: inline-block;
+    border-bottom: 2px solid transparent;
+    text-transform: uppercase;
+    text-decoration: none;
+    font-weight: bold;
+    transition: 150ms;
+}
+
+.tab:hover {
+    cursor: pointer;
+    color: #000;
+    text-decoration: none;
+    transform: scale(1.05);
+    border-color: #1161ee;
+}
+
+.active {
+    border-bottom: 2px solid #1161ee;
+}
+
+.card {
+    min-width: 550px;
+    position: relative;
+}
+
+#back {
+    margin-left: 30px;
+}
+
+#back:hover {
+    transform: scale(1.1);
+}
