@@ -4,12 +4,12 @@ div.card {
     padding: 5px;
 }
 
-div.service {
+div.clinic {
     height: 430px;
     max-width: 350px;
 }
 
-div.service .card-body {
+div.clinic .card-body {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -20,7 +20,7 @@ div.card:hover {
     transition: 300ms;
 }
 
-div.service img {
+div.clinic img {
     width: 40%;
     background-size: cover;
     max-width: 100%;
