@@ -56,7 +56,7 @@
                 </thead>
                 <tbody>
                     <tr>
-                        <th scope="row">201563630</th>
+                        <td scope="row">201563630</th>
                         <td>Rebe</td>
                         <td>Cloonan</td>
                         <td>rcloonan3@newyorker.com</td>
@@ -64,7 +64,7 @@
                         <td><button class="btn btn-danger mx-auto">Remove</button></td>
                     </tr>
                     <tr>
-                        <th scope="row">201486395</th>
+                        <td scope="row">201486395</th>
                         <td>Salli</td>
                         <td>Battin</td>
                         <td>sbattin4@tmall.com</td>
@@ -72,7 +72,7 @@
                         <td><button class="btn btn-danger mx-auto">Remove</button></td>
                     </tr>
                     <tr>
-                        <th scope="row">2013849240</th>
+                        <td scope="row">2013849240</th>
                         <td>Magdalena</td>
                         <td>Facer</td>
                         <td>mfacer5@ning.com</td>
@@ -80,7 +80,7 @@
                         <td><button class="btn btn-danger mx-auto">Remove</button></td>
                     </tr>
                     <tr>
-                        <th scope="row">2015236340</th>
+                        <td scope="row">2015236340</th>
                         <td>Josey</td>
                         <td>Bagguley</td>
                         <td>jbagguleyb@who.int</td>
@@ -88,7 +88,7 @@
                         <td><button class="btn btn-danger mx-auto">Remove</button></td>
                     </tr>
                     <tr>
-                        <th scope="row">201838134</th>
+                        <td scope="row">201838134</th>
                         <td>Tyler</td>
                         <td>Eschelle</td>
                         <td>teschellee@sbwire.com</td>
@@ -111,4 +111,17 @@
                 integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
                 src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
     </body>
+
+    <script>
+      $('.btn-danger').click( function() {
+        var row = $(this).parent().parent();
+        var id = $(row).children('td')[0].innerHTML;
+
+        // make AJAX call sending the ID and over there change the status of the dentist
+        row.remove();       // removes row from the front end
+        console.log(id);  // this is the ID of the person deleted
+      }
+
+    );
+    </script>
 </html>
