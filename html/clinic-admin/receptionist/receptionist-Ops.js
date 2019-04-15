@@ -2,15 +2,16 @@ function addRecept() {
   var fname = $('#first-name-field').val();
   var lname = $('#last-name-field').val();
   var email = $('#email-id-field').val();
-  var join-date = $('#join-date-field').val();
+  var joinDate = $('#join-date-field').val();
 // add to database
   $.ajax({
     type : "POST",
     url : "add-receptionist.php",
     data : { "fname" : fname,
              "lname" : lname, "email" : email,
-             "join-date" : join-date },
+             "join-date" : joinDate },
     success : function(result) {
+      $('footer').html(result);
       // result has the new row (Use echo from the php file)
       $('table').find('tbody:last').append(result);
       // after adding the stuff set the val for all those form fields to ""

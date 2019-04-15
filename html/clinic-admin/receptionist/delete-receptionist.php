@@ -1,5 +1,5 @@
 <?php
-require '..\database.php';
+require '../../database.php';
 
 $id = $_POST["id"];
 
@@ -11,7 +11,7 @@ function ChangeStatus($id) {
   mysqli_query($conn,$sql);
 
   $sql = "UPDATE user
-          SET user-status = 2               /* 2 as user status means person is no longer an employee*/ 
+          SET user-status = 2               /* 2 as user status means person is no longer an employee*/
           WHERE id = $id ";
   mysqli_query($conn,$sql);
 }
