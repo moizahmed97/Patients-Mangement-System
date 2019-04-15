@@ -8,8 +8,8 @@
               integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
               rel="stylesheet">
         <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
-        <link href="../../styles/general-styles.css" rel="stylesheet">
-        <link href="../../styles/admin.css" rel="stylesheet">
+        <link href="../../../styles/general-styles.css" rel="stylesheet">
+        <link href="../../../styles/admin.css" rel="stylesheet">
     </head>
     <body>
       <!--Navigation-->
@@ -41,7 +41,7 @@
             <h5 class="display-5 text-muted">Here you can manage all currently employed Receptionists</h5>
             <hr>
             <div class="add">
-                <button class="btn btn-success">Add</button>
+                <button class="btn btn-success" id="add-Receptionist" data-toggle="modal" data-target="#exampleModal">Add</button>
             </div>
             <table class="table">
                 <thead class="thead-dark">
@@ -81,6 +81,49 @@
 
         </div>
 
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Please Enter the Receptionist Details</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+
+        <form>
+          <div class="form-group">
+            <label for="first-name" class="col-form-label">First Name:</label>
+            <input type="text" class="form-control" id="first-name-field">
+          </div>
+          <div class="form-group">
+            <label for="receptionist-id" class="col-form-label">Last Name:</label>
+            <input type="text" class="form-control" id="last-name-field">
+          </div>
+          <div class="form-group">
+            <label for="receptionist-id" class="col-form-label">Email:</label>
+            <input type="email" class="form-control" id="last-name-field">
+          </div>
+          <div class="form-group">
+            <label for="receptionist-id" class="col-form-label">Date Joined:</label>
+            <input type="date" class="form-control" id="join-date-field">
+          </div>
+        </form>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" onclick="addRecept()" data-dismiss="modal">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
         <!--Bootstrap-->
         <script crossorigin="anonymous"
                 integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
@@ -91,24 +134,8 @@
         <script crossorigin="anonymous"
                 integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
                 src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
     </body>
 
-    <script>
-      $('.btn-danger').click( function() {
-        var row = $(this).parent().parent();
-        var id = $(row).children('td')[0].innerHTML;
 
-        // make AJAX call sending the ID and over there change the status of the receptionist
-        row.remove();       // removes row from the front end
-        console.log(id);  // this is the ID of the person deleted
-      }
-
-    );
-
-    $('.btn-success').click( function() {
-      // Add Code to enter receptionist info here
-    }
-
-  );
-    </script>
 </html>

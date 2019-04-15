@@ -26,7 +26,7 @@
               <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
                   <div class="navbar-nav ">
                     <a class="nav-item nav-link" href="clinic-admin-dashboard.html">My Clinic</a>
-                      <a class="nav-item nav-link" href="receptionists.html">Receptionists</a>
+                      <a class="nav-item nav-link" href="dentists.html">dentists</a>
                       <a class="nav-item nav-link active" href="#">Dentists</a>
                       <a class="nav-item nav-link" href="../landing.html">
                           <button class="btn btn-warning btn-sm" type="button">Sign Out</button>
@@ -41,7 +41,7 @@
             <h5 class="display-5 text-muted">Here you can manage all the dentists of your clinic</h5>
             <hr>
             <div class="add">
-                <button class="btn btn-success">Add</button>
+                <button class="btn btn-success" data-toggle="modal" data-target="#exampleModal">Add</button>
             </div>
             <table class="table">
                 <thead class="thead-dark">
@@ -100,28 +100,77 @@
 
         </div>
 
-        <!--Bootstrap-->
-        <script crossorigin="anonymous"
-                integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-                src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
-        <script crossorigin="anonymous"
-                integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
-                src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-        <script crossorigin="anonymous"
-                integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-                src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-    </body>
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Please Enter the Dentist Details</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
 
-    <script>
-      $('.btn-danger').click( function() {
-        var row = $(this).parent().parent();
-        var id = $(row).children('td')[0].innerHTML;
+                <form>
 
-        // make AJAX call sending the ID and over there change the status of the dentist
-        row.remove();       // removes row from the front end
-        console.log(id);  // this is the ID of the person deleted
-      }
+                  <div class="form-group">
+                    <label for="first-name" class="col-form-label">First Name:</label>
+                    <input type="text" class="form-control" id="first-name-field">
+                  </div>
+                  <div class="form-group">
+                    <label for="dentist-id" class="col-form-label">Last Name:</label>
+                    <input type="text" class="form-control" id="last-name-field">
+                  </div>
+                  <div class="form-group">
+                    <label for="dentist-id" class="col-form-label">Email ID:</label>
+                    <input type="email" class="form-control" id="email-id-field">
+                  </div>
+                  <div class="form-group">
+                    <label for="dentist-id" class="col-form-label">Clinic Number:</label>
+                    <input type="number" class="form-control" id="clinic-number-field">
+                  </div>
+                  <div class="form-group">
+                    <label for="dentist-id" class="col-form-label">Years active:</label>
+                    <input type="number" class="form-control" id="years-active-field">
+                  </div>
+                  <div class="form-group">
+                    <label for="dentist-id" class="col-form-label">Specialty ID:</label>
+                    <input type="number" class="form-control" id="specialty-id-field">
+                  </div>
+                  <div class="form-group">
+                    <label for="dentist-id" class="col-form-label">Clinic office:</label>
+                    <input type="number" class="form-control" id="clinic-office-field">
+                  </div>
+                </form>
 
-    );
-    </script>
+              </div>
+              <div class="modal-footer">
+                <button type="reset" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="reset" class="btn btn-primary" onclick="addDentist()" data-dismiss="modal">Save changes</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+                <!--Bootstrap-->
+                <script
+                        src="https://code.jquery.com/jquery-3.3.1.min.js"
+                        integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+                        crossorigin="anonymous">
+                </script>
+                <script crossorigin="anonymous"
+                        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+                        src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+                <script crossorigin="anonymous"
+                        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+                        src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+                        <script src="dentists-Ops.js" type="text/javascript"></script>
+
+
+            </body>
+
+
 </html>
