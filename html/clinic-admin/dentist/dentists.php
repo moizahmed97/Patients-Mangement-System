@@ -63,7 +63,8 @@
 
                 while($row = mysqli_fetch_array($result))
                 {
-                echo "<tr>";       // id of each serial number is in each row so easier to access when we need to delete
+                  $id = $row["D_ID"];
+                echo "<tr id = \"$id\">";       // id of each serial number is in each row so easier to access when we need to delete
 
                 echo "<td>" . $row["D_ID"] . "</td>";
                 echo "<td>" . $row["Fname"] . "</td>";
@@ -71,7 +72,7 @@
                 echo "<td>" . $row["Email"] . "</td>";
                 echo "<td>" . $row["Clinic_Num"] . "</td>";
                 echo "<td>" . $row["Status_ID"] . "</td>";
-                echo "<td>" . "<button type = \"button\" class = \"btn btn-danger mx-auto\">Remove" . "</button>" . "</td>";
+                echo "<td>" . "<button onclick = \"removeRow($id)\" type = \"button\" class = \"btn btn-danger mx-auto\">Remove" . "</button>" . "</td>";
                 // type = button needed to avoid refresh
                 echo "</tr>";
                 }
