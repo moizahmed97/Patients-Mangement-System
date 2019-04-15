@@ -106,6 +106,10 @@ mysqli_close($conn);
             <input type="text" class="form-control" id="last-name-field">
           </div>
           <div class="form-group">
+            <label for="first-name" class="col-form-label">ID:</label>
+            <input type="text" class="form-control" id="id">
+          </div>
+          <div class="form-group">
             <label for="receptionist-id" class="col-form-label">Email:</label>
             <input type="email" class="form-control" id="email-id-field">
           </div>
