@@ -34,6 +34,7 @@ function addRecept() {
       url : "delete-receptionist.php",
       data : {"id" : id},
       success : function (result) {
+        alert(result);
         row.remove();       // removes row from the front end
       }
 
