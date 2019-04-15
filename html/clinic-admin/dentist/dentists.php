@@ -8,8 +8,8 @@
               integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
               rel="stylesheet">
         <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
-        <link href="../../styles/general-styles.css" rel="stylesheet">
-        <link href="../../styles/admin.css" rel="stylesheet">
+        <link href="../../../styles/general-styles.css" rel="stylesheet">
+        <link href="../../../styles/admin.css" rel="stylesheet">
     </head>
     <body>
       <!--Navigation-->
@@ -51,50 +51,34 @@
                         <th scope="col">Last Name</th>
                         <th scope="col">Email ID</th>
                         <th scope="col">Phone number</th>
+                        <th scope="col">Status</th>
                         <th scope="col">Action</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td scope="row">201563630</th>
-                        <td>Rebe</td>
-                        <td>Cloonan</td>
-                        <td>rcloonan3@newyorker.com</td>
-                        <td>0502837653</td>
-                        <td><button class="btn btn-danger mx-auto">Remove</button></td>
-                    </tr>
-                    <tr>
-                        <td scope="row">201486395</th>
-                        <td>Salli</td>
-                        <td>Battin</td>
-                        <td>sbattin4@tmall.com</td>
-                        <td>0538293561</td>
-                        <td><button class="btn btn-danger mx-auto">Remove</button></td>
-                    </tr>
-                    <tr>
-                        <td scope="row">2013849240</th>
-                        <td>Magdalena</td>
-                        <td>Facer</td>
-                        <td>mfacer5@ning.com</td>
-                        <td>0506819304</td>
-                        <td><button class="btn btn-danger mx-auto">Remove</button></td>
-                    </tr>
-                    <tr>
-                        <td scope="row">2015236340</th>
-                        <td>Josey</td>
-                        <td>Bagguley</td>
-                        <td>jbagguleyb@who.int</td>
-                        <td>0553845227</td>
-                        <td><button class="btn btn-danger mx-auto">Remove</button></td>
-                    </tr>
-                    <tr>
-                        <td scope="row">201838134</th>
-                        <td>Tyler</td>
-                        <td>Eschelle</td>
-                        <td>teschellee@sbwire.com</td>
-                        <td>0539494557</td>
-                        <td><button class="btn btn-danger mx-auto">Remove</button></td>
-                    </tr>
+
+                  <?php
+                  require '../../database.php';
+                $result = mysqli_query($conn,"SELECT * FROM dentist where Status_ID = 1");
+
+                while($row = mysqli_fetch_array($result))
+                {
+                echo "<tr>";       // id of each serial number is in each row so easier to access when we need to delete
+
+                echo "<td>" . $row["D_ID"] . "</td>";
+                echo "<td>" . $row["Fname"] . "</td>";
+                echo "<td>" . $row["Lname"] . "</td>";
+                echo "<td>" . $row["Email"] . "</td>";
+                echo "<td>" . $row["Clinic_Num"] . "</td>";
+                echo "<td>" . $row["Status_ID"] . "</td>";
+                echo "<td>" . "<button type = \"button\" class = \"btn btn-danger mx-auto\">Remove" . "</button>" . "</td>";
+                // type = button needed to avoid refresh
+                echo "</tr>";
+                }
+
+                mysqli_close($conn);
+                ?>
+
                 </tbody>
             </table>
 
@@ -115,6 +99,10 @@
                 <form>
 
                   <div class="form-group">
+                    <div class="form-group">
+                      <label for="dentist-id" class="col-form-label">ID (Make Sure It is Unique):</label>
+                      <input type="number" class="form-control" id="id">
+                    </div>
                     <label for="first-name" class="col-form-label">First Name:</label>
                     <input type="text" class="form-control" id="first-name-field">
                   </div>
@@ -167,7 +155,7 @@
                         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
                         src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 
-                        <script src="dentists-Ops.js" type="text/javascript"></script>
+                        <script src="dentist-Ops.js" type="text/javascript"></script>
 
 
             </body>

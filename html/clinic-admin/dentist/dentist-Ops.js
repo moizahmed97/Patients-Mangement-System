@@ -1,19 +1,20 @@
 function addDentist() {
-  var dentist-first-name = $('#first-name-field').val();
-  var dentist-last-name = $('#last-name-field').val();
-  var dentist-email = $('#email-id-field').val();
-  var dentist-phone-number = $('#clinic-number-field').val();
-  var dentist-years-active = $('#years-active-field').val();
-  var specialty-id = $('#specialty-id-field').val();
-  var clinic-office = $('#clinic-office-field').val();
+  var id = $('#id').val();
+  var fname = $('#first-name-field').val();
+  var lname = $('#last-name-field').val();
+  var email = $('#email-id-field').val();
+  var number = $('#clinic-number-field').val();
+  var yearsActive = $('#years-active-field').val();
+  var specialtyID = $('#specialty-id-field').val();
+  var clinicOffice = $('#clinic-office-field').val();
 // add to database
   $.ajax({
     type : "POST",
     url : "add-dentist.php",
-    data : { "fname" : dentist-first-name,
-             "lname" : dentist-last-name, "email" : dentist-email,
-             "phone-number" : dentist-phone-number, "years-active" : dentist-years-active
-             "specialty-id" : specialty-id, "clinic-office" : clinic-office
+    data : { "id" : id, "fname" : fname,
+             "lname" : lname, "email" : email,
+             "phone-number" : number, "years-active" : yearsActive,
+             "specialty-id" : specialtyID, "clinic-office" : clinicOffice
            },
     success : function(result) {
       // result has the new row (Use echo from the php file)
@@ -35,12 +36,13 @@ function addDentist() {
     // get the ID of the receptinist deleted
     var row = $(this).parent().parent();
     var id = $(row).children('td')[0].innerHTML;
-
+    console.log(id);
     $.ajax({
       type : "POST",
-      url : "delete-receptionist.php",
+      url : "delete-dentist.php",
       data : {"id" : id},
       success : function (result) {
+        alert(result);
         row.remove();       // removes row from the front end
       }
 
