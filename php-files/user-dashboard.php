@@ -54,29 +54,50 @@
                 </div>
             </div>
 
-            <div class="row mt-3">
-                <div class="col-sm">
-                    <div class="card bg-light mb-3" style="width: 18rem;">
-                        <div class="card-body">
-                            <h5 class="card-title"></h5>
-                            <hr>
-                            <p class="card-text"></p>
-                            <h6 class="card-subtitle mb-2 text"></h6>
-                            <p class="card-text"></p>
-                            <a href="#" class="btn btn-primary">Rate </a>
-                            <a href="#" class="btn btn-danger" id = 'cancel'>Cancel</a>
-                            <?php
-                            session_start();
-                            require_once("../html/database.php");
-	                          $username = $_SESSION["username"];
-	                          echo $username;  
-                            ?>
-                        </div>
-                    </div>
-                </div>
+            <table class="table">
+                <thead class="thead-dark">
+                    <tr>
+                        <th scope="col">Clinic Name</th>   <!-- Get From clinic table -->
+                        <th scope="col">Doctor Name</th>   <!-- Get from dentist table -->
+                        <th scope="col">Room Number</th>   <!-- get from dentist table  -->
+                        <th scope="col">Time</th>          <!-- get from appointment table  -->
+                        <th scope="col">Status of Appointment</th>      <!-- get from appointment table -->
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
 
+                  <?php
+                  session_start();
+                  $id = $_SESSION["id"];
+                  $userName = $_SESSION["username"];
+                  require '../html/database.php';
+                $result = mysqli_query($conn,"SELECT *, appointment.Status_ID as appStatus from clinic join appointment on clinic.C_ID = appointment.C_ID join dentist on appointment.Dentist_ID = dentist.D_ID where Patient_ID = $id");
 
-            </div>
+                while($row = mysqli_fetch_array($result))
+                {
+                  $apID = $row["Apm_ID"];
+                  $docName = $row["Fname"] . " ". $row["Lname"];
+                echo "<tr id = \"$apID\">";       // id of each serial number is in each row so easier to access when we need to delete
+
+                echo "<td>" . $row["Clinic_Name"] . "</td>";
+                echo "<td>" . $docName . "</td>";
+                echo "<td>" . $row["Clinic_Office"] . "</td>";
+                echo "<td>" . $row["time"] . "</td>";
+                echo "<td>" . $row["appStatus"] . "</td>";
+                echo "<td>";
+                echo "<button type=\"button\" class=\"btn btn-danger\" onclick =\"cancel($apID)\">Cancel</button>";
+                echo "</td>";
+                // type = button needed to avoid refresh
+                echo "</tr>";
+                }
+
+                mysqli_close($conn);
+                ?>
+
+                </tbody>
+            </table>
+
         </div>
 
         <!--Clinics In the area-->
@@ -132,9 +153,11 @@
         </div>
 
 
-        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-                integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-                crossorigin="anonymous"></script>
+        <script
+                src="https://code.jquery.com/jquery-3.3.1.min.js"
+                integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+                crossorigin="anonymous">
+        </script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
                 integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
                 crossorigin="anonymous"></script>
@@ -142,28 +165,20 @@
                 integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
                 crossorigin="anonymous"></script>
         <script>
-            $('booknow').click(function () {
-                    $.ajax({
-                        type : "POST",
-                        url : "booknow.php",
-                        data: $("form").serialize(),
-                        success : function (result) {
-                            window.location.href = '../requester/user-dashboard.php';
-                        }
-                    });
-            })
-        </script>
-        <script>
-            $('cancel').click(function () {
-                $.ajax({
-                    type : "POST",
-                    url : "cancel.php",
-                    data: $("form").serialize(),
-                    success : function (result) {
-                        window.location.href = '../requester/user-dashboard.php';
-                    }
-                });
-            })
+          function cancel(apID) {
+            $.ajax({
+              type : "POST",
+              url : "cancel-appointment.php",
+              data : {"apID" : apID},
+              success : function (result) {
+                var sr = apID;
+                sr = '#' + sr;
+                // remove from front end
+                $(sr).fadeOut(1000);
+              }
+
+            });
+          }
         </script>
     </body>
 </html>
