@@ -46,36 +46,61 @@
                 </div>
             </div>
 
-                <div class="col-sm">
-                    <div class="card bg-light mb-3 " style="width: 18rem;">
-                        <div class="card-body">
-                            <h5 class="card-title"></h5>
-                            <h6 class="card-subtitle mb-2 text-muted"></h6>
-                            <p class="card-text"></p>
-                            <a href="#" class="btn btn-success" type = 'confirm'>Confirm </a>
-                            <a href="#" class="btn btn-info" type = 'update'>Update</a>
-                        </div>
-                        <?php
-                        require_once("../html/database.php");
-	                       $username=$_SESSION['username'];
-	                        $sql1 = "Select * from Appointment where U_ID ='".$Recept_ID."'";
-			                $result1=mysqli_query($conn, $sql1);
-                            while($row1 = mysqli_fetch_array($result1))
-                            {
-                                $sql2="SELECT * from Dentist where did=".$row1['D_ID'];
-                                $result2= mysqli_query($conn,$sql2);
-                                while($row2= mysqli_fetch_array($result2))
-                                    {
-                                        $sql3="SELECT * from clinic where CID=".$row1['C_ID'];
-                                        $result3= mysqli_query($conn,$sql3);
-                                        while($row3= mysqli_fetch_array($result3))
-                                            {
-                                                echo "<h5>".$row3['Name']."</h5>";
-                                                echo "<hr>";
-                                                echo "<p>".$row1['Fname']." ".$row1['Lname']."</p>";
-                                            }
-                                    }
-                            }
+  <?php
+    session_start();
+
+    require("../html/database.php");
+	  $username = $_SESSION['user'];
+
+    $sql = "SELECT * from users where UserName = '$username'";
+    $result = mysqli_query($conn, $sql);
+    while($row = mysqli_fetch_array($result))
+    $id = $row['U_ID'];
+
+    $sql = "SELECT * from appointment where Recept_ID =  $id";
+		$result1 = mysqli_query($conn, $sql);
+    while($row1 = mysqli_fetch_array($result1)) {
+    $id = $row1['Dentist_ID'];
+    $cid = $row1['C_ID'];
+    $pid = $row1['Patient_ID'];
+}
+    $sql = "SELECT * from dentist where D_ID = $id";
+    $result2 = mysqli_query($conn,$sql);
+    while($row2 = mysqli_fetch_array($result2)) {
+    $Fname = $row2['Fname'];
+    $Lname = $row2['Lname'];
+  }
+  $DentistName = $Fname . " " . $Lname;
+
+  // Get Patient Name
+  $sql = "SELECT * from users where U_ID = $pid";
+  $result2 = mysqli_query($conn,$sql);
+  while($row2 = mysqli_fetch_array($result2)) {
+  $Fname = $row2['Fname'];
+  $Lname = $row2['Lname'];
+}
+  $PatientName = $Fname . " " . $Lname;
+
+
+  $result = mysqli_query($conn,"SELECT * FROM appointment join users on appointment.Patient_ID = users.U_ID join  appointment.Dentist_ID = dentist.D_ID");
+
+  while($row = mysqli_fetch_array($result)) {
+
+    echo "<div class=\"col-sm\">";
+    echo "<div class=\"card bg-light mb-3\" style=\"width: 18rem;\">";
+    echo "<div class=\"card-body\">";
+    echo "<h5 class=\"card-title\">Patient : $PatientName</h5>";
+    echo "<h6 class=\"card-subtitle mb-2 text-muted\">Dentist : $DentistName</h6>";
+    echo "<p class=\"card-text\">Expected Time : 2:00 PM</p>";
+    echo "<a href=\"#\" class=\"btn btn-success\">Confirm </a>";
+    echo"<a href=\"#\" class=\"btn btn-info ml-2\">Update</a>";
+    echo"</div>";
+    echo"</div>";
+    echo"</div>";
+
+  }
+
+
                         ?>
                     </div>
                 </div>

@@ -5,7 +5,7 @@ require_once("../html/database.php");
     $user= $_POST["username"];
     $password = $_POST["password"];
 
-    $sql = "SELECT * from user where username = $UserName and password = '$Hashed_PW' ";
+    $sql = "SELECT * from users where  UserName = '$user' and Hashed_PW = '$password' ";
     $result = mysqli_query($conn, $sql);
     if (mysqli_num_rows($result) > 0) {
         while ($row = mysqli_fetch_array($result)) {
@@ -13,16 +13,15 @@ require_once("../html/database.php");
             $name = $row['Lname'];
         }
         if ($type == 1) {  // User
-            $url = 'user-dashboard.html';
+            $url = '../php-files/user-dashboard.php';
         } else if ($type == 2) {   //  Receptionist
-            $url = 'receptionist-dashboard.html';
+          $url = '../php-files/receptionist-dashboard.php';
         } else if ($type == 3) {  // Clinic Admin
-            $url = 'clinic-admin-dashboard.html';
-        } else if ($type_ID == 4) { // Sys-Admin
-            $url = 'sys-admin-dashboard.html'
+          $url = '../php-files/clinic-admin-dashboard.html';
+        } else if ($type == 4) { // Sys-Admin
+          $url = '../php-files/clinic-admin-user-dashboard.html';
         }
-        $_SESSION['user'] = $user;
-        $_SESSION['name'] = $Lname;
+    $_SESSION['user'] = $user;
         echo $url;
     } else {
         echo "Wrong User ID or Password";

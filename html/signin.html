@@ -59,7 +59,7 @@
                     $.ajax({
                       type : "POST",
                       url : "../php-files/auth.php",
-                      data : {"user" : user, "password" : password},
+                      data : {"username" : user, "password" : password},
                       success : function (result) {
                         alert(result);
                         window.location.href = result;

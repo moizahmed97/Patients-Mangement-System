@@ -24,13 +24,13 @@ require_once("../html/database.php");
 				$result2= mysqli_query($conn,$sql2);
 				while($row2= mysqli_fetch_array($result2))
 				{
-					$sql3="SELECT * from clinic where CID=".$row1['C_ID'];
+					$sql3="SELECT * from clinic where CID=".$row1['C_ID']";
 						$result3= mysqli_query($conn,$sql3);
 						while($row3= mysqli_fetch_array($result3))
 						{
                            				echo "<h5>".$row3['Name']."</h5>";
                             				echo "<hr>";
-                           				echo "<p>".$row1['Fname]." ".$row1['Lname']."</p>";
+                           				echo "<p>".$row1['Fname'] . " " .$row1['Lname']."</p>";
 						}
 				}
 
