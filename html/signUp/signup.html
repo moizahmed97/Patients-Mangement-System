@@ -8,10 +8,10 @@
               integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
               crossorigin="anonymous">
         <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
-        <link rel="stylesheet" href="../styles/authentication.css">
+        <link rel="stylesheet" href="../../styles/authentication.css">
     </head>
     <body>
-        <a href="landing.html" id="back"><img src="../images/back-arrow.png" alt="Back"></a>
+        <a href="landing.html" id="back"><img src="../../images/back-arrow.png" alt="Back"></a>
         <!-- Sign up form -->
         <div class="container">
             <!--Sign in, Sign Up radio buttons-->
@@ -25,26 +25,18 @@
                     <div id="signup-card">
                         <form method="POST" class="register-form" id="auth-form">
                             <div class="form-group">
-                                <label for="name">Full Name</label>
+                                <label for="name">UserName</label>
                                 <input type="text" class="form-control" id="name" name="name" placeholder="John Smith" required>
                             </div>
                             <div class="form-group">
-                                <label for="email">Email address</label>
-                                <input type="email" class="form-control" id="email" name="email" aria-describedby="emailHelp"
-                                       placeholder="john.smith@example.com" required>
-                                <small id="emailHelp" class="form-text text-muted">We'll never share your email with
-                                    anyone else.
-                                </small>
+                                <label for="name">First Name</label>
+                                <input type="text" class="form-control" id="fname" name="fname" placeholder="John Smith" required>
                             </div>
                             <div class="form-group">
-                                <label for="id">ID Number</label>
-                                <input type="text" class="form-control" id="id" name="id" placeholder="201XXXXXX" required>
+                                <label for="name">Last Name</label>
+                                <input type="text" class="form-control" id="lname" name="lname" placeholder="John Smith" required>
                             </div>
-                            <div class="form-group">
-                                <label for="password">Phone Number</label>
-                                <input type="tel" class="form-control" id="phone" name="phone" placeholder="05XXXXXXXX"
-                                       pattern="05[0-9]{8}" oninvalid="setCustomValidity('Please enter a number in the format 05XXXXXXXX')" required>
-                            </div>
+
                             <div class="form-group">
                                 <label for="password">Password</label>
                                 <input type="password" class="form-control" id="password" name="password" placeholder="Password" required>
@@ -54,12 +46,20 @@
                                 <input type="password" class="form-control" id="re-password"
                                        placeholder="Confirm Password" name="re-password" required>
                             </div>
+                            <div class="form-group">
+                                <label for="email">Email address</label>
+                                <input type="email" class="form-control" id="email" name="email" aria-describedby="emailHelp"
+                                       placeholder="john.smith@example.com" required>
+                                <small id="emailHelp" class="form-text text-muted">We'll never share your email with
+                                    anyone else.
+                                </small>
+                            </div>
                             <div class="form-group form-check">
                                 <input type="checkbox" class="form-check-input" id="tandc" required>
                                 <label class="form-check-label" for="tandc">I agree to the Terms and
                                     Conditions</label>
                             </div>
-                            <button type="submit" class="btn btn-primary btn-block mt-4 p-2">Register</button>
+                            <button type="button" id = "submitButton" onclick="addUser()"class="btn btn-primary btn-block mt-4 p-2">Register</button>
                         </form>
                     </div>
 
@@ -67,10 +67,34 @@
             </div>
         </div>
 
+        <script>
+    function addUser() {
+        var pwMatch = checkPasswordsMatch();
+        if (pwMatch) {
+            $.ajax({
+                type: "POST",
+                url: "createUser.php",
+                data: $("form").serialize(),
+                success: function (result) {
+                    window.location.href = '../../php-files/user-dashboard.php';
+                }
+            });
+        } else {
+            alert("Passwords Do Not Match");
+        }
+    }
+    function checkPasswordsMatch() {
+        return $('#password').val() === $('#re-password').val();
+    }
+</script>
+
+
         <!--Bootstrap-->
-        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-                integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-                crossorigin="anonymous"></script>
+        <script
+                src="https://code.jquery.com/jquery-3.3.1.min.js"
+                integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+                crossorigin="anonymous">
+        </script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
                 integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
                 crossorigin="anonymous"></script>
