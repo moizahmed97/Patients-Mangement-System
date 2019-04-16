@@ -23,8 +23,8 @@ require_once("../html/database.php");
           $url = 'sys-admin/sys-admin-dashboard.html';
         }
 
-    $_SESSION['user'] = $user;
-    $UserName = $_SESSION['user'];
+    $_SESSION['username'] = $user;
+    $UserName = $_SESSION['username'];
     $sql = "SELECT * FROM users where UserName = '$UserName' ";
     $result = mysqli_query($conn, $sql);
     while($row = mysqli_fetch_array($result))
