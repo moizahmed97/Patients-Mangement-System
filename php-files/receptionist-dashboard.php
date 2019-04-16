@@ -30,7 +30,7 @@
                         <a class="nav-item nav-link" href="#">
                             <button class="btn btn-info btn-sm" type="button">Profile</button>
                         </a>
-                        <a class="nav-item nav-link" href="landing.html">
+                        <a class="nav-item nav-link" href="logout.php">
                             <button class="btn btn-warning btn-sm" type="button">Sign Out</button>
                         </a>
                     </div>

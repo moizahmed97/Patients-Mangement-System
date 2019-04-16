@@ -15,7 +15,7 @@
       <!--Navigation-->
       <nav class="navbar navbar-expand-lg sticky-top navbar-dark bg-dark">
           <div class="container">
-              <a class="navbar-brand" href="../landing.html">PAMS</a>
+              <a class="navbar-brand" href="/Patients-Mangement-System/index.html">PAMS</a>
               <!--Collapse button-->
               <button aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"
                       class="navbar-toggler"
