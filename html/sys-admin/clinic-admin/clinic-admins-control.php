@@ -25,10 +25,10 @@
               <!--Links-->
               <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
                   <div class="navbar-nav ">
-                      <a class="nav-item nav-link" href="sys-admin-dashboard.html">Dashboard</a>
-                      <a class="nav-item nav-link" href="clinics-control.html">Clinics</a>
+                      <a class="nav-item nav-link" href="../sys-admin-dashboard.html">Dashboard</a>
+                      <a class="nav-item nav-link" href="../clinics/clinics-control.html">Clinics</a>
                       <a class="nav-item nav-link active" href="clinic-admins-control.html">Clinic Admins</a>
-                      <a class="nav-item nav-link" href="../landing.html">
+                      <a class="nav-item nav-link" href="/Patients-Mangement-System/php-files/logout.php">
                           <button class="btn btn-warning btn-sm" type="button">Sign Out</button>
                       </a>
                   </div>
