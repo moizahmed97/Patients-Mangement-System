@@ -1,7 +1,8 @@
 <?php
+require_once("../html/database.php");
 	$username=$_SESSION['username'];
 	$sql1 = "Select * from Appointment where username ='".$username."'";
-			$result1=mysqli_query($conn, $sql1);  
+			$result1=mysqli_query($conn, $sql1);
 			echo "<div class="row mt-3">
                 			<div class="col-sm">
                     				<div class="card bg-light mb-3" style="width: 18rem;">
@@ -32,6 +33,6 @@
                            				echo "<p>".$row1['Fname]." ".$row1['Lname']."</p>";
 						}
 				}
-				
+
 			}
 ?>

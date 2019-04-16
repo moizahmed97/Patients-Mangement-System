@@ -1,12 +1,12 @@
 <?php
-    require_once("../../config.php");
+require_once("../html/database.php");
 
     session_start();
     $user= $_POST["username"];
     $password = $_POST["password"];
 
     $sql = "SELECT * from user where username = $UserName and password = '$Hashed_PW' ";
-    $result = mysqli_query($link, $sql);
+    $result = mysqli_query($conn, $sql);
     if (mysqli_num_rows($result) > 0) {
         while ($row = mysqli_fetch_array($result)) {
             $type = $row['Type_ID'];

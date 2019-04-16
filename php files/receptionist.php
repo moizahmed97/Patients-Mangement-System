@@ -1,7 +1,9 @@
 <?php
+require_once("../html/database.php");
+
 	$username=$_SESSION['username'];
 	$sql1 = "Select * from Appointment where U_ID ='".$Recept_ID."'";
-			$result1=mysqli_query($conn, $sql1);  
+			$result1=mysqli_query($conn, $sql1);
 			echo "<div class="row mt-3">
                 			<div class="col-sm">
                     				<div class="card bg-light mb-3" style="width: 18rem;">
@@ -19,7 +21,7 @@
             			</div>";
 			while($row1 = mysqli_fetch_array($result1))
 			{
-				$sql2="SELECT * from Dentist where did=".$row1['D_ID'];
+				$sql2="SELECT * from Dentist where D_ID=".$row1['D_ID'];
 				$result2= mysqli_query($conn,$sql2);
 				while($row2= mysqli_fetch_array($result2))
 				{
@@ -32,6 +34,6 @@
                            				echo "<p>".$row1['Fname]." ".$row1['Lname']."</p>";
 						}
 				}
-				
+
 			}
 ?>

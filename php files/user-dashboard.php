@@ -66,6 +66,7 @@
                             <a href="#" class="btn btn-primary">Rate </a>
                             <a href="#" class="btn btn-danger" id = 'cancel'>Cancel</a>
                             <?php
+                            require_once("../html/database.php");
 	                            $username=$_SESSION['username'];
 	                            $sql1 = "Select * from Appointment where username ='".$username."'";
 			                    $result1=mysqli_query($conn, $sql1);
@@ -81,7 +82,7 @@
                                                     {
                                                         echo "<h5>".$row3['Name']."</h5>";
                                                         echo "<hr>";
-                                                        echo "<p>".$row1['Fname]." ".$row1['Lname']."</p>";
+                                                        echo "<p>".$row1['Fname']." ".$row1['Lname']."</p>";
                                                     }
                                         }
 

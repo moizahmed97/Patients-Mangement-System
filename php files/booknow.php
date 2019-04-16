@@ -2,8 +2,8 @@
 session_start();
 if(isset($_POST['Book now']))
 {
-		
-		include 'dbconfig.php';
+
+	require_once("../html/database.php");
 		$uid=$_POST['uid'];
 		$did=$_POST['did'];
 		$cid=$_POST['cid'];
@@ -12,10 +12,10 @@ if(isset($_POST['Book now']))
 		if(!empty($_POST['uid'])&&!empty($_POST['did']))
 		{
 			require_once("dbconfig.php");
-			if (mysqli_query($conn, $sql)) 
+			if (mysqli_query($conn, $sql))
 			{
 				header( "Refresh:2; url=user-dashboard.html");
-			} 
+			}
 				else
 				{
 					echo "Error: " . $sql . "<br>" . mysqli_error($conn);
