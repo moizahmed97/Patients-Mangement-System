@@ -10,7 +10,7 @@ function ChangeStatus($id, $conn) {
   mysqli_query($conn,$sql);
 
   $sql = "UPDATE users
-          SET Status_ID = 2
+          SET Status_ID = 1
           WHERE U_ID = $id ";
   mysqli_query($conn,$sql);
   echo $sql;

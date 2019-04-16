@@ -46,6 +46,7 @@ function addClinicAdmin() {
 );   */
 
 function removeRow(id) {
+  console.log("He");
   $.ajax({
     type : "POST",
     url : "delete-clinic-admin.php",
@@ -54,7 +55,24 @@ function removeRow(id) {
       var sr = id;
       sr = '#' + sr;
       // remove from front end
-      $(sr).fadeOut(1000);
+      tds = $(sr).children();
+      $(tds[5]).html("Inactive");
+}
+
+  });
+}
+
+function activate(id) {
+  $.ajax({
+    type : "POST",
+    url : "activate-clinic-admin.php",
+    data : {"id" : id},
+    success : function (result) {
+      var sr = id;
+      sr = '#' + sr;
+      // remove from front end
+      tds = $(sr).children();
+      $(tds[5]).html("Active");
     }
 
   });

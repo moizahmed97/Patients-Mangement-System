@@ -27,8 +27,16 @@ function UpdateTable($id, $fname, $lname, $email,$clinicName) {
     echo "<td>" . $lname . "</td>";
     echo "<td>" . $email . "</td>";
     echo "<td>" . $clinicName . "</td>";
-    echo "<td>" . "<button onclick = \"removeRow($id)\" type = \"button\" class = \"btn btn-danger mx-auto\">Remove" . "</button>" . "</td>";
+    echo "<td>" . 'Active' . "</td>";
+  //  echo "<td>" . "<button onclick = \"removeRow($id)\" type = \"button\" class = \"btn btn-danger mx-auto\">Remove" . "</button>" . "</td>";
     // type = button needed to avoid refresh
+    echo "<td>";
+    echo "<div class=\"btn-group\" role=\"group\" aria-label=\"Basic example\">";
+    echo "<button type=\"button\" class=\"btn btn-danger\" onclick =\"removeRow($id)\">Deactivate</button>";
+    echo "<button type=\"button\" class=\"btn btn-success\" onclick =\"activate($id)\">Activate</button>";
+    echo "</div>";
+    echo "</td>";
+
     echo "</tr>";
 }
  ?>

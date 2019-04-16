@@ -51,6 +51,7 @@
                         <th scope="col">Last Name</th>
                         <th scope="col">Email ID</th>
                         <th scope="col">Clinic Name</th>
+                        <th scope="col">Status</th>
                         <th scope="col">Action</th>
                     </tr>
                 </thead>
@@ -58,11 +59,16 @@
 
                   <?php
                   require '../../database.php';
-                $result = mysqli_query($conn,"SELECT * FROM users join clinic where users.U_ID = clinic.Clinic_ManID and users.Type_ID = 3");
+                $result = mysqli_query($conn,"SELECT *, users.Status_ID as status FROM users join clinic where users.U_ID = clinic.Clinic_ManID or users.Type_ID = 3");
 
                 while($row = mysqli_fetch_array($result))
                 {
                   $id = $row["U_ID"];
+                  $status = $row["status"];
+                  if ($status == 1)
+                    $stat = 'Active';
+                  else
+                    $stat = 'Inactive';
                 echo "<tr id = \"$id\">";       // id of each serial number is in each row so easier to access when we need to delete
 
                 echo "<td>" . $row["U_ID"] . "</td>";
@@ -70,9 +76,16 @@
                 echo "<td>" . $row["Lname"] . "</td>";
                 echo "<td>" . $row["Email"] . "</td>";
                 echo "<td>" . $row["Clinic_Name"] . "</td>";
-                echo "<td>" . $row["Status_ID"] . "</td>";
-                echo "<td>" . "<button onclick = \"removeRow($id)\" type = \"button\" class = \"btn btn-danger mx-auto\">Remove" . "</button>" . "</td>";
+                echo "<td>" . $stat . "</td>";
+              //  echo "<td>" . "<button onclick = \"removeRow($id)\" type = \"button\" class = \"btn btn-danger mx-auto\">Remove" . "</button>" . "</td>";
                 // type = button needed to avoid refresh
+                echo "<td>";
+                echo "<div class=\"btn-group\" role=\"group\" aria-label=\"Basic example\">";
+                echo "<button type=\"button\" class=\"btn btn-danger\" onclick =\"removeRow($id)\">Deactivate</button>";
+                echo "<button type=\"button\" class=\"btn btn-success\" onclick =\"activate($id)\">Activate</button>";
+                echo "</div>";
+                echo "</td>";
+
                 echo "</tr>";
                 }
 

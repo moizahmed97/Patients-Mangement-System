@@ -51,6 +51,7 @@
                         <th scope="col">Last Name</th>
                         <th scope="col">Email</th>
                         <th scope="col">Join Date</th>
+                        <th scope="col">Status</th>
                         <th scope="col">Action</th>
                     </tr>
                 </thead>
@@ -58,7 +59,7 @@
 
                   <?php
                   require '../../database.php';
-$result = mysqli_query($conn,"SELECT * FROM users where Status_ID = 1 AND Type_ID = 2");
+$result = mysqli_query($conn,"SELECT * FROM users where Type_ID = 2");
 
 while($row = mysqli_fetch_array($result))
 {
@@ -70,8 +71,15 @@ while($row = mysqli_fetch_array($result))
   echo "<td>" . $row["Lname"] . "</td>";
   echo "<td>" . $row["Email"] . "</td>";
   echo "<td>" . $row["Reg_Date"] . "</td>";
-  echo "<td>" . "<button onclick = \"removeRow($id)\" type = \"button\" class = \"btn btn-danger mx-auto\">Remove" . "</button>" . "</td>";
+  echo "<td>" . $row["Status_ID"] . "</td>";
+  //echo "<td>" . "<button onclick = \"removeRow($id)\" type = \"button\" class = \"btn btn-danger mx-auto\">Remove" . "</button>" . "</td>";
   // type = button needed to avoid refresh
+  echo "<td>";
+  echo "<div class=\"btn-group\" role=\"group\" aria-label=\"Basic example\">";
+  echo "<button type=\"button\" class=\"btn btn-danger\" onclick =\"removeRow($id)\">Deactivate</button>";
+  echo "<button type=\"button\" class=\"btn btn-success\" onclick =\"activate($id)\">Activate</button>";
+  echo "</div>";
+  echo "</td>";
   echo "</tr>";
 }
 

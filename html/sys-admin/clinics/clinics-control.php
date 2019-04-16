@@ -8,8 +8,8 @@
               integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
               rel="stylesheet">
         <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
-        <link href="../../styles/general-styles.css" rel="stylesheet">
-        <link href="../../styles/admin.css" rel="stylesheet">
+        <link href="../../../styles/general-styles.css" rel="stylesheet">
+        <link href="../../../styles/admin.css" rel="stylesheet">
     </head>
     <body>
       <!--Navigation-->
@@ -47,26 +47,66 @@
                 <thead class="thead-dark">
                     <tr>
                         <th scope="col">ID</th>
-                        <th scope="col">Clinic Name</th>
-                        <th scope="col">Branch Number</th>
-                        <th scope="col">Start Date</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Status</th>
                         <th scope="col">Action</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <th scope="row">1</th>
-                        <td>Square Root Dental Clinic</td>
-                        <td>1</td>
-                        <td>5/22/18, 6:12 PM</td>
-                        <td><button class="btn btn-danger mx-auto">Remove</button></td>
-                    </tr>
+                  <?php
+                  require '../../database.php';
+                  $result = mysqli_query($conn,"SELECT * FROM clinic");
+
+                  while($row = mysqli_fetch_array($result))
+                  {
+                  $id = $row["C_ID"];
+                  $status = $row["Status_ID"];
+                  echo "<tr id = \"$id\">";       // id of each serial number is in each row so easier to access when we need to delete
+
+                  echo "<td>" . $row["C_ID"] . "</td>";
+                  echo "<td>" . $row["Clinic_Name"] . "</td>";
+                  echo "<td>" . $row["Status_ID"] . "</td>";
+                  ?>
+                  <td>
+                  <div class="btn-group" role="group" aria-label="Basic example">
+                    <button type="button" class="btn btn-secondary">Left</button>
+                    <button type="button" class="btn btn-secondary">Middle</button>
+                    <button type="button" class="btn btn-secondary">Right</button>
+                  </div> </td>
+                  <?php
+                  // type = button needed to avoid refresh
+                  echo "</tr>";
+                  }
+
+                  mysqli_close($conn);
+                  ?>
 
 
                 </tbody>
             </table>
 
         </div>
+
+        <script>
+        function removeRow(id, status) {
+          $.ajax({
+            type : "POST",
+            url : "delete-clinic.php",
+            data : {"id" : id},
+            success : function (result) {
+              var sr = id;
+              sr = '#' + sr;
+              // remove from front end
+              $(sr).fadeOut(1000);
+            }
+
+          });
+        }
+
+
+
+
+        </script>
 
         <!--Bootstrap-->
         <script crossorigin="anonymous"
