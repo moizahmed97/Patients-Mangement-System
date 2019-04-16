@@ -10,16 +10,16 @@
     // Check whether the ID exists
     $nameExists = checkNameExists($name, $conn);
     if ($nameExists) {
-        echo "ID already exists";
+        echo "name already exists";
     } else {
         // insert into the users table
         $_SESSION["username"] = $name;
         $sql = "INSERT INTO users VALUES (NULL, '$name', '$fname', '$lname', '$password', '$email', 0000-00-00, $type, 1)";
-        mysqli_query($link, $sql);
+        mysqli_query($conn, $sql);
         $_SESSION["id"] = getUserID($name,$conn);
     }
     function checkNameExists($name, $link) {
-        $sql = "SELECT UserName from users where UserName = $name";
+        $sql = "SELECT UserName from users where UserName = '$name'";
         $result = mysqli_query($link, $sql);
         if (mysqli_num_rows($result) > 0) {
             return true;
@@ -29,7 +29,7 @@
     }
 
     function getUserID($name, $link) {
-        $sql = "SELECT U_ID from users where UserName = $name";
+        $sql = "SELECT U_ID from users where UserName = '$name'";
         $result = mysqli_query($link, $sql);
         if (mysqli_num_rows($result) > 0) {
           while($row = mysqli_fetch_array($result))
