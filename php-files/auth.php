@@ -18,9 +18,9 @@ require_once("../html/database.php");
         } else if ($type == 2) {   //  Receptionist
           $url = '../php-files/receptionist-dashboard.php';
         } else if ($type == 3) {  // Clinic Admin
-          $url = '../php-files/clinic-admin-dashboard.html';
+          $url = 'clinic-admin/clinic-admin-dashboard.php';
         } else if ($type == 4) { // Sys-Admin
-          $url = '../php-files/clinic-admin-user-dashboard.html';
+          $url = 'sys-admin/sys-admin-dashboard.html';
         }
 
     $_SESSION['user'] = $user;

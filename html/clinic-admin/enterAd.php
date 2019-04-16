@@ -6,7 +6,7 @@ $fee = 100;
 $ad = $_POST["ad"];
 $from = $_POST["from"];
 $to = $_POST["to"];
-$adminID =   1;                //$_SESSION["id"];
+$adminID = $_SESSION["id"];
 
 $sql = "INSERT INTO advertisement values (NULL, '$from', '$to', '$ad',$fee,$adminID)";
 mysqli_query($conn,$sql);

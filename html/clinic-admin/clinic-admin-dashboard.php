@@ -28,7 +28,7 @@
                         <a class="nav-item nav-link active" href="clinic-admin-dashboard.html">My Clinic</a>
                         <a class="nav-item nav-link" href="receptionists.html">Receptionists</a>
                         <a class="nav-item nav-link" href="dentists.html">Dentists</a>
-                        <a class="nav-item nav-link" href="../landing.html">
+                        <a class="nav-item nav-link" href="/Patients-Mangement-System/php-files/logout.php">
                             <button class="btn btn-warning btn-sm" type="button">Sign Out</button>
                         </a>
                     </div>
