@@ -82,7 +82,7 @@
   $PatientName = $Fname . " " . $Lname;
 
 
-  $result = mysqli_query($conn,"SELECT * FROM appointment join users on appointment.Patient_ID = users.U_ID join  appointment.Dentist_ID = dentist.D_ID");
+  $result = mysqli_query($conn,"SELECT * FROM users join appointment on users.U_ID  = appointment.Patient_ID join  dentist on appointment.Dentist_ID = dentist.D_ID");
 
   while($row = mysqli_fetch_array($result)) {
 
