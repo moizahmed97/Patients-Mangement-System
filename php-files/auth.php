@@ -1,6 +1,7 @@
 <?php
 require_once("../html/database.php");
 
+
     session_start();
     $user= $_POST["username"];
     $password = $_POST["password"];
@@ -21,8 +22,16 @@ require_once("../html/database.php");
         } else if ($type == 4) { // Sys-Admin
           $url = '../php-files/clinic-admin-user-dashboard.html';
         }
+
     $_SESSION['user'] = $user;
-        echo $url;
+    $UserName = $_SESSION['user'];
+    $sql = "SELECT * FROM users where UserName = '$UserName' ";
+    $result = mysqli_query($conn, $sql);
+    while($row = mysqli_fetch_array($result))
+    $id = $row['U_ID'];
+    $_SESSION['id'] = $id;
+    echo $url;
+
     } else {
         echo "Wrong User ID or Password";
     }
