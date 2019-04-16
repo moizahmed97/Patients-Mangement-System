@@ -37,7 +37,7 @@
         </nav>
 
         <div class="container">
-
+          <br>
           <h2>Clinic Info</h2>
           <div class="form-group">
              <label for="exampleFormControlTextarea1">Enter your Clinic Info Here</label>
@@ -48,16 +48,24 @@
            <hr>
 
           <h2>Clinic Advertisement</h2>
-          <h4>Ability to enter advertisement here specifying the time period </h4>
+          <div class="form-group">
+             <label for="exampleFormControlTextarea1">Enter your Ad Here</label>
+             <textarea class="form-control" id="clinicAd" rows="3"></textarea>
+           </div>
+
+           <div class="row">
+             <div class="col">
+               <input type="text" class="form-control" placeholder="From" id = "from">
+             </div>
+             <div class="col">
+               <input type="text" class="form-control" placeholder="To" id = "to">
+             </div>
+           </div>
+
+           <button id="advertisement"class="btn btn-primary btn mt-3" type="button" onclick="enterAd()">Request Ad</button>
           <hr>
 
-          <h2>Card to Recpetionist Management Console</h2>
-            <h4>Manage Receptionist here</h4>
-          <hr>
 
-          <h2>Card to Dentist Dentist Management Console</h2>
-            <h4>Manage Dentists here</h4>
-          <hr>
         </div>
 
         <script>
@@ -68,11 +76,27 @@
               url : "updateClinicInfo.php",
               data : { "clinicInfo" : info },
               success : function(result) {
-                // result has the new row (Use echo from the php file)
-                alert(result);
+                $('#clinicInfo').val("");
               }
             });
             }
+
+          function enterAd() {
+            var ad = $('#clinicAd').val();
+            var from = $('#from').val();
+            var to = $('#to').val();
+            $.ajax({
+              type : "POST",
+              url : "enterAd.php",
+              data : { "ad" : ad, "from" : from, "to" : to },
+              success : function(result) {
+                alert(result);
+                $('#clinicAd').val("");
+                $('#from').val("");
+                $('#to').val("");
+              }
+            });
+          }
 
 
         </script>

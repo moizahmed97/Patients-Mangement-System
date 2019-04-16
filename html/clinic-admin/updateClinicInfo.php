@@ -7,6 +7,4 @@ $adminID =   1;                //$_SESSION["id"];
 
 $sql = "UPDATE clinic SET Clinic_Profile = '$info' WHERE Clinic_ManID = $adminID";
 mysqli_query($conn,$sql);
-
-
  ?>
