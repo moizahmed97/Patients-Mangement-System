@@ -39,8 +39,13 @@
         <div class="container">
 
           <h2>Clinic Info</h2>
-            <h4>Ability to Enter and Update Clinic Info here</h4>
-          <hr>
+          <div class="form-group">
+             <label for="exampleFormControlTextarea1">Enter your Clinic Info Here</label>
+             <textarea class="form-control" id="clinicInfo" rows="3"></textarea>
+           </div>
+           <button id="clinicInfo"class="btn btn-primary btn" type="button" onclick="updateClinicInfo()">Update Clinic Info</button>
+
+           <hr>
 
           <h2>Clinic Advertisement</h2>
           <h4>Ability to enter advertisement here specifying the time period </h4>
@@ -55,10 +60,29 @@
           <hr>
         </div>
 
+        <script>
+          function updateClinicInfo() {
+            var info = $('#clinicInfo').val();
+            $.ajax({
+              type : "POST",
+              url : "updateClinicInfo.php",
+              data : { "clinicInfo" : info },
+              success : function(result) {
+                // result has the new row (Use echo from the php file)
+                alert(result);
+              }
+            });
+            }
+
+
+        </script>
+
             <!--Bootstrap-->
-            <script crossorigin="anonymous"
-                    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-                    src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+            <script
+                    src="https://code.jquery.com/jquery-3.3.1.min.js"
+                    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+                    crossorigin="anonymous">
+            </script>
             <script crossorigin="anonymous"
                     integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
                     src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
@@ -66,4 +90,6 @@
                     integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
                     src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
     </body>
+
+
 </html>
