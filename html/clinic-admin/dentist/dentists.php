@@ -58,8 +58,10 @@
                 <tbody>
 
                   <?php
+                  session_start();
+                  $AdminID = $_SESSION["id"];
                   require '../../database.php';
-                $result = mysqli_query($conn,"SELECT * FROM dentist where Status_ID = 1");
+                $result = mysqli_query($conn,"SELECT * FROM dentist where Status_ID = 1 ");
 
                 while($row = mysqli_fetch_array($result))
                 {
