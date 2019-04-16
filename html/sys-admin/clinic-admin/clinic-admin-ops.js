@@ -12,6 +12,7 @@ function addClinicAdmin() {
              "lname" : lname, "email" : email,
              "clinicName" : clinicName },
     success : function(result) {
+      if (result.length > 35) {
       // result has the new row (Use echo from the php file)
       $('table').find('tbody:last').append(result);
       // after adding the stuff set the val for all those form fields to ""
@@ -20,6 +21,10 @@ function addClinicAdmin() {
       $('#last-name-field').val("");
       $('#email-id-field').val("");
       $('#clinic-name-field').val("");
+    }
+    else {
+      alert("No Such Clinic Found");
+    }
     }
   });
 }
