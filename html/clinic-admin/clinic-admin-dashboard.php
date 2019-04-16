@@ -15,7 +15,7 @@
         <!--Navigation-->
         <nav class="navbar navbar-expand-lg sticky-top navbar-dark bg-dark">
             <div class="container">
-                <a class="navbar-brand" href="../landing.html">PAMS</a>
+                <a class="navbar-brand" href="../../index.html">PAMS</a>
                 <!--Collapse button-->
                 <button aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"
                         class="navbar-toggler"
@@ -26,9 +26,9 @@
                 <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
                     <div class="navbar-nav ">
                         <a class="nav-item nav-link active" href="clinic-admin-dashboard.html">My Clinic</a>
-                        <a class="nav-item nav-link" href="receptionists.html">Receptionists</a>
-                        <a class="nav-item nav-link" href="dentists.html">Dentists</a>
-                        <a class="nav-item nav-link" href="/Patients-Mangement-System/php-files/logout.php">
+                        <a class="nav-item nav-link" href="receptionist/receptionists.php">Receptionists</a>
+                        <a class="nav-item nav-link" href="dentist/dentists.php">Dentists</a>
+                        <a class="nav-item nav-link" href="/php-files/logout.php">
                             <button class="btn btn-warning btn-sm" type="button">Sign Out</button>
                         </a>
                     </div>

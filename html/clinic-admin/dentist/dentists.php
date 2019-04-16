@@ -28,7 +28,7 @@
                     <a class="nav-item nav-link" href="clinic-admin-dashboard.html">My Clinic</a>
                       <a class="nav-item nav-link" href="dentists.html">dentists</a>
                       <a class="nav-item nav-link active" href="#">Dentists</a>
-                      <a class="nav-item nav-link" href="../landing.html">
+                      <a class="nav-item nav-link" href="/Patients-Mangement-System/php-files/logout.php">
                           <button class="btn btn-warning btn-sm" type="button">Sign Out</button>
                       </a>
                   </div>
@@ -61,7 +61,7 @@
                   session_start();
                   $AdminID = $_SESSION["id"];
                   require '../../database.php';
-                $result = mysqli_query($conn,"SELECT * FROM dentist where Status_ID = 1 ");
+                $result = mysqli_query($conn,"SELECT * FROM dentist join clinic on dentist.CLinic_ID = clinic.C_ID where Clinic_ManID = $AdminID");
 
                 while($row = mysqli_fetch_array($result))
                 {
