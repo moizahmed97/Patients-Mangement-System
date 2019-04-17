@@ -25,7 +25,7 @@
               <!--Links-->
               <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
                   <div class="navbar-nav ">
-                    <a class="nav-item nav-link" href="clinic-admin-dashboard.html">My Clinic</a>
+                    <a class="nav-item nav-link" href="../clinic-admin-dashboard.php">My Clinic</a>
                       <a class="nav-item nav-link" href="dentists.html">dentists</a>
                       <a class="nav-item nav-link active" href="#">Dentists</a>
                       <a class="nav-item nav-link" href="/Patients-Mangement-System/php-files/logout.php">
@@ -103,7 +103,7 @@
 
                   <div class="form-group">
                     <div class="form-group">
-                      <label for="dentist-id" class="col-form-label">ID (Make Sure It is Unique):</label>
+                      <label for="dentist-id" class="col-form-label">ID :</label>
                       <input type="number" class="form-control" id="id">
                     </div>
                     <label for="first-name" class="col-form-label">First Name:</label>

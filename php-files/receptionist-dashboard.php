@@ -92,7 +92,7 @@
     echo "<h5 class=\"card-title\">Patient : $PatientName</h5>";
     echo "<h6 class=\"card-subtitle mb-2 text-muted\">Dentist : $DentistName</h6>";
     echo "<p class=\"card-text\">Expected Time : 2:00 PM</p>";
-    echo "<a href=\"#\" class=\"btn btn-success\">Confirm </a>";
+    echo "<a onclick= \"removeCard()\" href=\"#\" class=\"btn btn-success\">Confirm </a>";
     echo"<a href=\"#\" class=\"btn btn-info ml-2\">Update</a>";
     echo"</div>";
     echo"</div>";
@@ -121,6 +121,10 @@
                 integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
                 crossorigin="anonymous"></script>
         <script>
+          function removeCard() {
+            $('.card').fadeOut(1000);
+          }
+
             $('update').click(function () {
                 $.ajax({
                     type : "POST",

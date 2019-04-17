@@ -25,9 +25,9 @@
               <!--Links-->
               <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
                   <div class="navbar-nav ">
-                    <a class="nav-item nav-link" href="clinic-admin-dashboard.html">My Clinic</a>
+                    <a class="nav-item nav-link" href="../clinic-admin-dashboard.php">My Clinic</a>
                       <a class="nav-item nav-link active" href="#">Receptionists</a>
-                      <a class="nav-item nav-link" href="dentists.html">Dentists</a>
+                      <a class="nav-item nav-link" href="../dentist/dentists.php">Dentists</a>
                       <a class="nav-item nav-link" href="../../../php-files/logout.php">
                           <button class="btn btn-warning btn-sm" type="button">Sign Out</button>
                       </a>
