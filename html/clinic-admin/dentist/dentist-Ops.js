@@ -52,6 +52,18 @@ function addDentist() {
 
 );   */
 
+function updateDentist(dID) {
+  $.ajax({
+    type : "POST",
+    url : "update-dentist.php",
+    data : $('#updateForm').serialize(),
+    success : function (result) {
+      alert(result);
+    }
+
+  });
+}
+
 function removeRow(id) {
   $.ajax({
     type : "POST",

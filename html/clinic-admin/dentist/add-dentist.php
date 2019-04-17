@@ -15,7 +15,7 @@ UpdateTable($id,$fname, $lname, $email,$PNumber);
 function addToDatabase($id, $fname, $lname, $yearsActive,$email, $specialtyID, $clinicOffice,$PNumber,$conn) {
   $status = 1;       // Status as 1 means the person is active and working
   // Insert these values into the table user
-  $sql = "INSERT into dentist values($id, '$fname', '$lname', 'Best doctor', $yearsActive, 'website.com','$email',5,$specialtyID,1,$clinicOffice, $PNumber,$status )";
+  $sql = "INSERT into dentist values($id, '$fname', '$lname', 'Best doctor', $yearsActive, 'website.com','$email',5,$specialtyID,$clinicOffice,$clinicOffice, $PNumber,$status )";
   mysqli_query($conn,$sql);
   echo $sql;
 }
@@ -24,7 +24,7 @@ function UpdateTable($id, $fname, $lname, $email,$PNumber) {
     // use echo to create the row
     echo "<tr id = \"$id\">";       // id of each serial number is in each row so easier to access when we need to delete
 
-    echo "<td>" . $id . "</td>";
+    echo "<td onclick = \"updateDentist($id)\">" . $id . "</td>";
     echo "<td>" . $fname . "</td>";
     echo "<td>" . $lname . "</td>";
     echo "<td>" . $email . "</td>";

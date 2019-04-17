@@ -68,13 +68,13 @@
                   $id = $row["D_ID"];
                 echo "<tr id = \"$id\">";       // id of each serial number is in each row so easier to access when we need to delete
 
-                echo "<td>" . $row["D_ID"] . "</td>";
+                echo "<td>" . $row["D_ID"] ."</td>";
                 echo "<td>" . $row["Fname"] . "</td>";
                 echo "<td>" . $row["Lname"] . "</td>";
                 echo "<td>" . $row["Email"] . "</td>";
                 echo "<td>" . $row["Clinic_Num"] . "</td>";
                 echo "<td>" . $row["Status_ID"] . "</td>";
-                echo "<td>" . "<button onclick = \"removeRow($id)\" type = \"button\" class = \"btn btn-danger mx-auto\">Remove" . "</button>" . "</td>";
+                echo "<td>" . "<button onclick = \"removeRow($id)\" type = \"button\" class = \"btn btn-danger mx-auto\">Remove" . "</button>" .  "<button onclick = \"updateDentist($id)\" type=\"button\" class=\"btn btn-primary ml-1\">"  . "Update</button>"    . "</td>";
                 // type = button needed to avoid refresh
                 echo "</tr>";
                 }
@@ -84,6 +84,46 @@
 
                 </tbody>
             </table>
+
+            <form id="updateForm">
+
+              <div class="form-group">
+                <div class="form-group">
+                  <label for="dentist-id" class="col-form-label">ID :</label>
+                  <input type="number" class="form-control" name="id">
+                </div>
+                <label for="first-name" class="col-form-label">First Name:</label>
+                <input type="text" class="form-control" name="fname">
+              </div>
+              <div class="form-group">
+                <label for="dentist-id" class="col-form-label">Last Name:</label>
+                <input type="text" class="form-control" name="lname">
+              </div>
+              <div class="form-group">
+                <label for="dentist-id" class="col-form-label">Email ID:</label>
+                <input type="email" class="form-control" name="email">
+              </div>
+              <div class="form-group">
+                <label for="dentist-id" class="col-form-label">Clinic Number:</label>
+                <input type="number" class="form-control" name="cNo">
+              </div>
+              <div class="form-group">
+                <label for="dentist-id" class="col-form-label">Years active:</label>
+                <input type="number" class="form-control" name="yearsActive">
+              </div>
+              <div class="form-group">
+                <label for="dentist-id" class="col-form-label">Specialty ID:</label>
+                <input type="number" class="form-control" name="specID">
+              </div>
+              <div class="form-group">
+                <label for="dentist-id" class="col-form-label">Clinic office:</label>
+                <input type="number" class="form-control" name="clinicOffice">
+              </div>
+            </form>
+
+
+
+
 
         </div>
 
@@ -130,7 +170,7 @@
                     <input type="number" class="form-control" id="specialty-id-field">
                   </div>
                   <div class="form-group">
-                    <label for="dentist-id" class="col-form-label">Clinic office:</label>
+                    <label for="dentist-id" class="col-form-label">Clinic ID:</label>
                     <input type="number" class="form-control" id="clinic-office-field">
                   </div>
                 </form>
