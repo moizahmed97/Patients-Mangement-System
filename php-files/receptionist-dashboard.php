@@ -50,7 +50,7 @@
     session_start();
 
     require("../html/database.php");
-	  $username = $_SESSION['user'];
+	  $username = $_SESSION['username'];
 
     $sql = "SELECT * from users where UserName = '$username'";
     $result = mysqli_query($conn, $sql);
