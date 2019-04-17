@@ -39,6 +39,7 @@
         </nav>
 
         <div class="container">
+
             <div class="row mt-3">
                 <div class="col-sm-12">
                     <h4>Ongoing Requests</h4>
@@ -52,62 +53,65 @@
     require("../html/database.php");
 	  $username = $_SESSION['username'];
 
-    $sql = "SELECT * from users where UserName = '$username'";
-    $result = mysqli_query($conn, $sql);
-    while($row = mysqli_fetch_array($result))
-    $id = $row['U_ID'];
+//     $sql = "SELECT * from users where UserName = '$username'";
+//     $result = mysqli_query($conn, $sql);
+//     while($row = mysqli_fetch_array($result))
+//     $id = $row['U_ID'];
+//
+//     $sql = "SELECT * from appointment where Recept_ID =  $id";
+// 		$result1 = mysqli_query($conn, $sql);
+//     while($row1 = mysqli_fetch_array($result1)) {
+//     $id = $row1['Dentist_ID'];
+//     $cid = $row1['C_ID'];
+//     $pid = $row1['Patient_ID'];
+// }
+//     $sql = "SELECT * from dentist where D_ID = $id";
+//     $result2 = mysqli_query($conn,$sql);
+//     while($row2 = mysqli_fetch_array($result2)) {
+//     $Fname = $row2['Fname'];
+//     $Lname = $row2['Lname'];
+//   }
+//   $DentistName = $Fname . " " . $Lname;
+//
+//   // Get Patient Name
+//   $sql = "SELECT * from users where U_ID = $pid";
+//   $result2 = mysqli_query($conn,$sql);
+//   while($row2 = mysqli_fetch_array($result2)) {
+//   $Fname = $row2['Fname'];
+//   $Lname = $row2['Lname'];
+// }
+//   $PatientName = $Fname . " " . $Lname;
 
-    $sql = "SELECT * from appointment where Recept_ID =  $id";
-		$result1 = mysqli_query($conn, $sql);
-    while($row1 = mysqli_fetch_array($result1)) {
-    $id = $row1['Dentist_ID'];
-    $cid = $row1['C_ID'];
-    $pid = $row1['Patient_ID'];
-}
-    $sql = "SELECT * from dentist where D_ID = $id";
-    $result2 = mysqli_query($conn,$sql);
-    while($row2 = mysqli_fetch_array($result2)) {
-    $Fname = $row2['Fname'];
-    $Lname = $row2['Lname'];
-  }
-  $DentistName = $Fname . " " . $Lname;
 
-  // Get Patient Name
-  $sql = "SELECT * from users where U_ID = $pid";
-  $result2 = mysqli_query($conn,$sql);
-  while($row2 = mysqli_fetch_array($result2)) {
-  $Fname = $row2['Fname'];
-  $Lname = $row2['Lname'];
-}
-  $PatientName = $Fname . " " . $Lname;
-
-
-  $result = mysqli_query($conn,"SELECT * FROM users join appointment on users.U_ID  = appointment.Patient_ID join  dentist on appointment.Dentist_ID = dentist.D_ID");
+  $result = mysqli_query($conn,"SELECT *, users.Fname as UFname, users.Lname as ULname  FROM users join appointment on users.U_ID  = appointment.Patient_ID join  dentist on appointment.Dentist_ID = dentist.D_ID where appointment.Status_ID = 1" );
 
   while($row = mysqli_fetch_array($result)) {
-
+    $aID = $row['Apm_ID'];
     echo "<div class=\"col-sm\">";
-    echo "<div class=\"card bg-light mb-3\" style=\"width: 18rem;\">";
+    echo "<div class=\"card bg-light mb-3\" style=\"width: 18rem;\" id = \"$aID\">";
     echo "<div class=\"card-body\">";
+    $PatientName = $row['UFname'] . " " . $row['ULname'];
     echo "<h5 class=\"card-title\">Patient : $PatientName</h5>";
+    $DentistName = $row['Fname'] . " " . $row['Lname'];
     echo "<h6 class=\"card-subtitle mb-2 text-muted\">Dentist : $DentistName</h6>";
-    echo "<p class=\"card-text\">Expected Time : 2:00 PM</p>";
-    echo "<a onclick= \"removeCard()\" href=\"#\" class=\"btn btn-success\">Confirm </a>";
-    echo"<a href=\"#\" class=\"btn btn-info ml-2\">Update</a>";
+    $time = $row['time'];
+    echo "<p class=\"card-text\">Expected Time : $time</p>";
+    echo "<a onclick= \"removeCard($aID)\" href=\"#\" class=\"btn btn-success\">Confirm </a>";
+    echo"<a onclick= \"updateCard($aID)\" class=\"btn btn-info ml-2\">Update </a>";
     echo"</div>";
     echo"</div>";
     echo"</div>";
 
   }
 
-
-                        ?>
+?>
+    <div class="form-group">
+      <label>New Time</label>
+      <input type="text" class="form-control" id="updateTime" placeholder="Update Time Here">
+    </div>
                     </div>
-                </div>
 
-            </div>
 
-        </div>
 
         <script
                 src="https://code.jquery.com/jquery-3.3.1.min.js"
@@ -121,32 +125,31 @@
                 integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
                 crossorigin="anonymous"></script>
         <script>
-          function removeCard() {
-            $('.card').fadeOut(1000);
+          function removeCard(aID) {
+            $.ajax({
+                type : "POST",
+                url : "confirm.php",
+                data: {"aID" : aID},
+                success : function (result) {
+                  aID = '#' + aID;
+                  $(aID).fadeOut(1000);
+                }
+            });
           }
 
-            $('update').click(function () {
-                $.ajax({
-                    type : "POST",
-                    url : "delete.php",
-                    data: $("form").serialize(),
-                    success : function (result) {
-                        window.location.href = '../requester/user-dashboard.php';
-                    }
-                });
-            })
+          function updateCard(aID) {
+            var newTime = $('#updateTime').val();
+            $.ajax({
+                type : "POST",
+                url : "update.php",
+                data: {"newTime" : newTime, "aID" : aID},
+                success : function (result) {
+                  alert("Please Refresh");
+                }
+            });
+          }
+
         </script>
-        <script>
-            $('confirm').click(function () {
-                $.ajax({
-                    type : "POST",
-                    url : "confirm.php",
-                    data: $("form").serialize(),
-                    success : function (result) {
-                        window.location.href = '../requester/user-dashboard.php';
-                    }
-                });
-            })
-        </script>
+
     </body>
 </html>
