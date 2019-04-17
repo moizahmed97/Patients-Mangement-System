@@ -53,36 +53,6 @@
     require("../html/database.php");
 	  $username = $_SESSION['username'];
 
-//     $sql = "SELECT * from users where UserName = '$username'";
-//     $result = mysqli_query($conn, $sql);
-//     while($row = mysqli_fetch_array($result))
-//     $id = $row['U_ID'];
-//
-//     $sql = "SELECT * from appointment where Recept_ID =  $id";
-// 		$result1 = mysqli_query($conn, $sql);
-//     while($row1 = mysqli_fetch_array($result1)) {
-//     $id = $row1['Dentist_ID'];
-//     $cid = $row1['C_ID'];
-//     $pid = $row1['Patient_ID'];
-// }
-//     $sql = "SELECT * from dentist where D_ID = $id";
-//     $result2 = mysqli_query($conn,$sql);
-//     while($row2 = mysqli_fetch_array($result2)) {
-//     $Fname = $row2['Fname'];
-//     $Lname = $row2['Lname'];
-//   }
-//   $DentistName = $Fname . " " . $Lname;
-//
-//   // Get Patient Name
-//   $sql = "SELECT * from users where U_ID = $pid";
-//   $result2 = mysqli_query($conn,$sql);
-//   while($row2 = mysqli_fetch_array($result2)) {
-//   $Fname = $row2['Fname'];
-//   $Lname = $row2['Lname'];
-// }
-//   $PatientName = $Fname . " " . $Lname;
-
-
   $result = mysqli_query($conn,"SELECT *, users.Fname as UFname, users.Lname as ULname  FROM users join appointment on users.U_ID  = appointment.Patient_ID join  dentist on appointment.Dentist_ID = dentist.D_ID where appointment.Status_ID = 1" );
 
   while($row = mysqli_fetch_array($result)) {
