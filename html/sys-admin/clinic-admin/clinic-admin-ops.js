@@ -23,7 +23,7 @@ function addClinicAdmin() {
       $('#clinic-name-field').val("");
     }
     else {
-      alert("No Such Clinic Found");
+      alert(result);
     }
     }
   });

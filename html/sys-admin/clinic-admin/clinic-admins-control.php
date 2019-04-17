@@ -59,8 +59,7 @@
 
                   <?php
                   require '../../database.php';
-                $result = mysqli_query($conn,"SELECT *, users.Status_ID as status FROM users join clinic where users.U_ID = clinic.Clinic_ManID or users.Type_ID = 3");
-
+               $result = mysqli_query($conn,"SELECT  *, users.Status_ID as status FROM users  left join clinic on users.U_ID = clinic.Clinic_ManID where users.Type_ID = 3");
                 while($row = mysqli_fetch_array($result))
                 {
                   $id = $row["U_ID"];
@@ -113,7 +112,7 @@
 
                   <div class="form-group">
                     <div class="form-group">
-                      <label for="dentist-id" class="col-form-label">ID (Make Sure It is Unique):</label>
+                      <label for="dentist-id" class="col-form-label">Clinic Admin ID:</label>
                       <input type="number" class="form-control" id="id">
                     </div>
                     <label for="first-name" class="col-form-label">First Name:</label>
@@ -129,7 +128,7 @@
                   </div>
                   <div class="form-group">
                     <label for="dentist-id" class="col-form-label">Clinic Name:</label>
-                    <input type="number" class="form-control" id="clinic-name-field">
+                    <input type="text" class="form-control" id="clinic-name-field">
                   </div>
                 </form>
 

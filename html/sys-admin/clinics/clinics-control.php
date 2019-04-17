@@ -111,7 +111,7 @@
 
                   <div class="form-group">
                     <div class="form-group">
-                      <label for="dentist-id" class="col-form-label">ID (Make Sure It is Unique):</label>
+                      <label for="dentist-id" class="col-form-label">Clinic ID:</label>
                       <input type="number" class="form-control" id="id">
                     </div>
                     <label for="first-name" class="col-form-label">Clinic Name:</label>

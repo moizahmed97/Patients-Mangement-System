@@ -14,13 +14,13 @@ addToDatabase($id, $fname, $lname, $email, $clinicName, $userName, $conn);
 UpdateTable($id,$fname, $lname, $email,$clinicName);
 }
 else {
-  echo "You entered the wrong clinic Name";
+  echo "No Such Clinic Found";
 }
 
 function addToDatabase($id, $fname, $lname, $email, $clinicName, $userName, $conn) {
   $status = 1;       // Status as 1 means the person is active and working
   // Insert these values into the table user
-  $sql = "INSERT into users values($id, '$userName', '$fname', '$lname', 'password', '$email',0000-00-00 ,3,$status )";
+  $sql = "INSERT into users values(NULL, '$userName', '$fname', '$lname', 'password', '$email',0000-00-00 ,3,$status )";
   mysqli_query($conn,$sql);
 
 }
