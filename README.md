@@ -1,7 +1,7 @@
 # Patients-Mangement-System
 A Full Stack Web Application that allows users to book appointments for a Clinics online
 
-The Web App is a full solution for the technical needs of a Clinic built using the LAMP structure 
+The Web App is a full solution for the technical needs of a Clinic built using the LAMP stack
 
 The Front end has been developed in JavaScript using Bootstrap 4, while the back end has been written in PHP
 The Database used is a MySQL instance.
