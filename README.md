@@ -1,5 +1,5 @@
 # Patients-Mangement-System
-A Full Stack Web Application that allows users to book appointments for a Clinics online
+A Full Stack mobile first Web Application that allows users to book appointments for a Clinics online
 
 The Web App is a full solution for the technical needs of a Clinic built using the LAMP stack
 
